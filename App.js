@@ -3,7 +3,7 @@ import HeLLo from "./HeLLo.js";
 import Lab5 from './Lab5.js';
 import CourseRoutes from "./Kanbas/courses/routes.js";
 import ModuleRoutes from "./Kanbas/moduLes/routes.js";
-import AssignmentRoutes from './Kanbas/assignments/routes.js';
+import AssignmentRoutes from './Kanbas/Assignments/routes.js';
 import cors from "cors";
 
 
