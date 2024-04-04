@@ -30,17 +30,45 @@ const todos = [
 ];
 
 const Lab5 = (app) => {
-  app.get("/a5/todos", (req, res) => {
-    res.json(todos);
-  });
+  // app.get("/a5/todos", (req, res) => {
+  //   res.json(todos);
+  // });
 
-  app.post("/a5/todos", (req, res) => {
+  app.get("/a5/todos/create", (req, res) => {
+    console.log("I am here");
+    console.log(req.body)
     const newTodo = {
       ...req.body,
       id: new Date().getTime(),
     };
     todos.push(newTodo);
-    res.json(newTodo);
+    console.log(newTodo);
+    res.json(todos);
+  });
+
+  
+  app.post("/a5/todos/createNew", (req, res) => {
+    console.log("I am here");
+    console.log(req.body)
+    const newTodo = {
+      ...req.body,
+      id: new Date().getTime(),
+    };
+    todos.push(newTodo);
+    console.log(newTodo);
+    res.json(todos);
+  });
+
+  app.post("/a5/todos", (req, res) => {
+    console.log("I am here");
+    console.log(req.body)
+    const newTodo = {
+      ...req.body,
+      id: new Date().getTime(),
+    };
+    todos.push(newTodo);
+    console.log(newTodo);
+    res.json(todos);
   });
 
 
@@ -53,6 +81,7 @@ const Lab5 = (app) => {
 
   app.get("/a5/todos", (req, res) => {
     const { completed } = req.query;
+    console.log(completed);
     if (completed !== undefined) {
       const completedBool = completed === "true";
       const completedTodos = todos.filter(
@@ -65,7 +94,7 @@ const Lab5 = (app) => {
 
   
 
-  app.delete("/a5/todos/:id", (req, res) => {
+  app.delete("/a5/todos/:id/delete", (req, res) => {
     const { id } = req.params;
     const todo = todos.find((t) => t.id === parseInt(id));
     if (!todo) {
@@ -74,10 +103,11 @@ const Lab5 = (app) => {
       return;
     }
     todos.splice(todos.indexOf(todo), 1);
+    res.json(todos);
     res.sendStatus(200);
   });
 
-  app.put("/a5/todos/:id", (req, res) => {
+  app.get("/a5/todos/:id", (req, res) => {
     const { id } = req.params;
     const todo = todos.find((t) => t.id === parseInt(id));
     if (!todo) {
@@ -85,11 +115,11 @@ const Lab5 = (app) => {
         .json({ message: `Unable to update Todo with ID ${id}` });
       return;
     }
-    todo.title = req.body.title;
-    todo.description = req.body.description;
-    todo.due = req.body.due;
-    todo.completed = req.body.completed;
-    res.sendStatus(200);
+    todo.title = res.body.title;
+    todo.description = res.body.description;
+    todo.due = res.body.due;
+    todo.completed = res.body.completed;
+    res.json(todos);
   });
 
 
@@ -97,6 +127,7 @@ const Lab5 = (app) => {
   app.get("/a5/todos/:id/title/:title", (req, res) => {
     const { id, title } = req.params;
     const todo = todos.find((t) => t.id === parseInt(id));
+    console.log(id, title, todos, todo)
     todo.title = title;
     res.json(todos);
   });

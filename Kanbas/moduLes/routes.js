@@ -1,6 +1,19 @@
 import db from "../Database/index.js";
 function ModuleRoutes(app) {
 
+  var lessons = [{
+    "_id": "L2001",
+    "name": "LEARNING OBJECTIVES",
+    "description": "A brief history of rocketry and space exploration.",
+    "module": "M101"
+  },
+  {
+    "_id": "L2002",
+    "name": "Learn how to create user interfaces with HTML",
+    "description": "Basic principles of rocket propulsion.",
+    "module": "M101"
+  }];
+
     app.delete("/api/modules/:mid", (req, res) => {
         const { mid } = req.params;
         db.modules = db.modules.filter((m) => m._id !== mid);
@@ -14,6 +27,7 @@ function ModuleRoutes(app) {
       ...req.body,
       course: cid,
       _id: new Date().getTime().toString(),
+      lessons: lessons
     };
     db.modules.push(newModule);
     res.send(newModule);
