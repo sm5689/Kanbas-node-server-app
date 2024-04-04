@@ -188,6 +188,16 @@ const Lab5 = (app) => {
     res.json(module.name);
   });
 
+  app.get("/a5/module/description", (req, res) => {
+    res.json(module.description);
+  });
+
+  app.get("/a5/module/description/:newDescription", (req, res) => {
+    const { newDescription } = req.params;
+    module.description = newDescription;
+    res.json(module);
+  });
+
   app.get("/a5/welcome", (req, res) => {
     res.send("Welcome to Assignment 5");
   });
