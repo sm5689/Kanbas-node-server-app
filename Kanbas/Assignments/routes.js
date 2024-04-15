@@ -3,12 +3,12 @@ function AssignmentRoutes(app) {
     app.get("/api/assignments", (req, res) => {
         res.send(db.assignments);
     });
-    app.get("/api/courses/:cid/assignments", (req, res) => {
+    app.get("/api/Courses/:cid/assignments", (req, res) => {
         const { cid } = req.params;
         const assignments = db.assignments.filter((a) => a.course === cid);
         res.send(assignments);
     });
-    app.post("/api/courses/:cid/assignments", (req, res) => {
+    app.post("/api/Courses/:cid/assignments", (req, res) => {
         const { cid } = req.params;
         const newAssignment = {
             ...req.body,

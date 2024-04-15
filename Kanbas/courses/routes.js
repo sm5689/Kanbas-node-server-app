@@ -81,12 +81,12 @@ export default function CourseRoutes(app) {
     res.json(courseNumber);
   }
 
-  app.post("/api/courses", createCourse);
-  app.delete("/api/courses/:courseId", deleteCourse);
-  app.get("/api/courses", findAllCourses);
-  app.get("/api/courses/:courseId", findCourseById);
-  app.put("/api/courses/:courseId", updateCourse);
-  app.get("/api/courses/:courseId/CourseNumber", findCourseNumber);
+  app.post("/api/Courses", createCourse);
+  app.delete("/api/Courses/:courseId", deleteCourse);
+  app.get("/api/Courses", findAllCourses);
+  app.get("/api/Courses/:courseId", findCourseById);
+  app.put("/api/Courses/:courseId", updateCourse);
+  app.get("/api/Courses/:courseId/CourseNumber", findCourseNumber);
 }
 
  

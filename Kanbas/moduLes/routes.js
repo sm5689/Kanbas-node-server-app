@@ -99,12 +99,12 @@ function ModuleRoutes(app) {
     res.json(modules);
   }
 
-  app.post("/api/courses/:cid/modules", createModule);
+  app.post("/api/Courses/:cid/modules", createModule);
   app.delete("/api/modules/:moduleId", deleteModule);
   app.get("/api/modules", findAllModules);
   app.get("/api/modules/:moduleId", findModuleById);
   app.put("/api/modules/:moduleId", updateModule);
-  app.get("/api/courses/:courseId/modules", findModuleforCourse);
+  app.get("/api/Courses/:courseId/modules", findModuleforCourse);
 
 }
 export default ModuleRoutes;
