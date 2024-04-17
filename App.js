@@ -6,7 +6,7 @@ import ModuleRoutes from "./Kanbas/moduLes/routes.js";
 import AssignmentRoutes from './Kanbas/Assignments/routes.js';
 import cors from "cors";
 import mongoose from "mongoose";
-import UserRoutes from "../kanbas-node-server-app/Kanbas/Users/routes.js";
+import UserRoutes from "./Kanbas/Users/routes.js";
 import "dotenv/config";
 import session from "express-session";
 
