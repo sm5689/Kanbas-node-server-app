@@ -12,7 +12,7 @@ import session from "express-session";
 
 const CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
 
-mongoose.connect(CONNECTION_STRING);
+mongoose.connect("mongodb+srv://mishrasura:mishra.sura%40northeastern@cluster0.6xegd0j.mongodb.net/kanbas?retryWrites=true&w=majority&appName=Cluster0");
 
 
 // mongoose.connect("mongodb://127.0.0.1:27017/kanbas");
