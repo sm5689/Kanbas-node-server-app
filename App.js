@@ -10,8 +10,12 @@ import UserRoutes from "../kanbas-node-server-app/Kanbas/Users/routes.js";
 import "dotenv/config";
 import session from "express-session";
 
+const CONNECTION_STRING = process.env.DB_CONNECTION_STRING || 'mongodb://127.0.0.1:27017/kanbas';
 
-mongoose.connect("mongodb://127.0.0.1:27017/kanbas");
+mongoose.connect(CONNECTION_STRING);
+
+
+// mongoose.connect("mongodb://127.0.0.1:27017/kanbas");
 const app = express()
 app.use(express.json());
 
