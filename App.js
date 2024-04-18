@@ -1,7 +1,7 @@
 import "dotenv/config";
 import session from "express-session";
 import express from 'express';
-import Hello from "./Hello.js"
+import Hello from "./HeLLo.js"
 import Lab5 from "./Lab5.js";
 import cors from "cors";
 import ModuleRoutes from './Kanbas/moduLes/routes.js';
