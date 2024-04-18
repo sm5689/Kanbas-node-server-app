@@ -1,31 +1,25 @@
-import express from 'express';
-import HeLLo from "./HeLLo.js";
-import Lab5 from './Lab5.js';
-import CourseRoutes from "./Kanbas/courses/routes.js";
-import ModuleRoutes from "./Kanbas/moduLes/routes.js";
-import AssignmentRoutes from './Kanbas/Assignments/routes.js';
-import cors from "cors";
-import mongoose from "mongoose";
-import UserRoutes from "./Kanbas/Users/routes.js";
 import "dotenv/config";
 import session from "express-session";
+import express from 'express';
+import Hello from "./Hello.js"
+import Lab5 from "./Lab5.js";
+import cors from "cors";
+import ModuleRoutes from './Kanbas/moduLes/routes.js';
+import AssignmentRoutes from './Kanbas/Assignments/routes.js';
+import CourseRoutes from './Kanbas/courses/routes.js';
+import mongoose from "mongoose";
+import UserRoutes from './Kanbas/Users/routes.js';
 
-const CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
-
-mongoose.connect("mongodb+srv://mishrasura:mishra.sura%40northeastern@cluster0.6xegd0j.mongodb.net/kanbas?retryWrites=true&w=majority&appName=Cluster0");
-
+const CONNECTION_STRING = process.env.DB_CONNECTION_STRING  || 'mongodb://127.0.0.1:27017/kanbas'
+mongoose.connect(CONNECTION_STRING);
 
 // mongoose.connect("mongodb://127.0.0.1:27017/kanbas");
-const app = express()
-app.use(express.json());
-
+const app = express();
 app.use(cors({
     credentials: true,
-    origin: process.env.FRONTEND_URL,
-  })
- );
-
- const sessionOptions = {
+    origin: process.env.FRONTEND_URL
+  }));
+  const sessionOptions = {
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
@@ -40,40 +34,12 @@ app.use(cors({
   }
   app.use(session(sessionOptions));
   
-
-//  const sessionOptions = {
-//     secret: "any string",
-//     resave: false,
-//     saveUninitialized: false,
-//   };
-//   app.use(
-//     session(sessionOptions)
-//   );
   
-
 app.use(express.json());
-const port = process.env.PORT || 4000;
-
 UserRoutes(app);
-
 ModuleRoutes(app);
-
-AssignmentRoutes(app);
-
-
 CourseRoutes(app);
-
-app.use(express.json());
-
+AssignmentRoutes(app)
 Lab5(app);
-
-HeLLo(app);
-
-// app.get('/hello', (req, res) => {res.send('Life is good!')})
-
-app.get('/test1', (req, res) => {res.send('Life is a little bit difficult!')})
-
-// app.get('/', (req, res) => {res.send('Welcome to Full Stack Development!')})
-
+Hello(app)
 app.listen(process.env.PORT || 4000);
-

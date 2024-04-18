@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
-const userSchema = new mongoose.Schema(
-  {
-    _id: String,
+const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     firstName: String,
@@ -11,9 +9,7 @@ const userSchema = new mongoose.Schema(
     role: {
       type: String,
       enum: ["STUDENT", "FACULTY", "ADMIN", "USER"],
-      default: "USER",
-    },
+      default: "USER",},
   },
-  { collection: "users" }
-);
+  { collection: "users" });
 export default userSchema;
